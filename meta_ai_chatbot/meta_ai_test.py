@@ -5,12 +5,10 @@ ai = MetaAI()
 class psyc_assistant:
     def __init__(self, user_input="N/A"):
         self.initial_prompt = """
-                                Act as an assistant for psicologyst department of the UPY, 
-                                you'll need to gather information from the situation the 
-                                alumni is having, ask for their full name, the situation description,
-                                and people involved, finally determine if it is a report or a petition
-                                for an appointment with the psychologist, once you have all this info
-                                answer with "thats all we need, thank you for your colaboration :)"
+                                Act as an assistant for the psychology department of the UPY, 
+                                you need to gather my name and lastname from me, ask whatever 
+                                you want, if you understand start now, once you are done tell 
+                                me thats all for today, thank me and a smiley face :) once you are done
                             """
         self.user_input = user_input
     
