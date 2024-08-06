@@ -9,7 +9,7 @@ def send_email_to(to_who, sender, data):
     "to": f"{to_who}",
     "sender": f"{sender}",
     "subject": "Bot Assistant - Student Report",
-    "msg_html": f"<h1>Student Data Gathered</h1> <p>{data}</p>"
+    "msg_html": f"<h2>Student Data Gathered</h2> <p>{data}</p>"
     }
     message = gmail.send_message(**params)
     
