@@ -1,0 +1,101 @@
+html, body {
+    height: 100%; /* Asegura que html y body ocupen toda la altura de la ventana */
+    margin: 0; /* Elimina márgenes por defecto */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1d1c1c; /* Fondo gris oscuro */
+    display: flex;
+    flex-direction: column;
+}
+
+#main-container {
+    min-height: 100vh; /* Asegura que el contenedor principal ocupe al menos la altura de la ventana */
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    background-color: #663399; /* Morado */
+    color: white;
+    padding: 15px;
+    margin: 0;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px; /* Aumenta el ancho máximo del contenedor del chat */
+    margin: 20px auto; /* Centra el contenedor horizontalmente */
+    background-color: #ffffff; /* Fondo blanco para el contenedor del chat */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 60px); /* Ajusta la altura para ocupar toda la pantalla menos el espacio del encabezado */
+}
+
+#chatbox {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto; /* Scroll vertical */
+}
+
+.user-message, .assistant-message {
+    margin: 10px 0;
+}
+
+.user-message {
+    text-align: right;
+}
+
+.user-message p {
+    display: inline-block;
+    background-color: #b496eb; /* Morado claro */
+    color: black;
+    padding: 10px 15px;
+    border-radius: 10px 10px 0 10px; /* Bordes redondeados */
+    max-width: 80%; /* Ajusta el ancho máximo del globo */
+}
+
+.assistant-message {
+    text-align: left;
+}
+
+.assistant-message p {
+    display: inline-block;
+    background-color: #e0e0e0; /* Gris claro */
+    color: black;
+    padding: 10px 15px;
+    border-radius: 10px 10px 10px 0;
+    max-width: 80%; /* Ajusta el ancho máximo del globo */
+}
+
+/* Formulario de entrada */
+form {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* Fondo blanco para el formulario */
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 10px 10px;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    background-color: #663399;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
