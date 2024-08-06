@@ -5,18 +5,58 @@ ai = MetaAI()
 class psyc_assistant:
     def __init__(self, user_input="N/A"):
         self.initial_prompt = """
-                                Act as an assistant for the psychology department of the UPY, 
-                                you need to gather my name and lastname from me, ask whatever 
-                                you want, if you understand start now, once you are done tell 
-                                me thats all for today, thank me and a smiley face :) once you are done
+                        Role Description:
+                        You are an assistant for the psychology department at a university called UPY. Your task is to interact with students and collect specific information based on two scenarios.
+
+                        Information to Gather:
+
+                        Scenario 1: Standard Information Collection
+
+                        Full name
+                        Major
+                        Fourth-month period (the current academic term they are in)
+                        Description of the problem
+                        Whether an appointment is needed
+                        
+                        Scenario 2: Anonymous Information Collection
+                        If the student wishes to remain anonymous, only collect:
+
+                        Description of the problem
+
+                        Instructions:
+                        Don't confirm your understanding, just begin the interaction.
+                        Mandatory instruction: Once all required information is collected, you must conclude the conversation with: "That's all for today, thank you! :)"
+                        Please begin now.
                             """
+                            
         self.user_input = user_input
     
     def get_response(self):
         return ai.prompt(message=self.user_input)
 
     def last_response(self):
-        return ai.prompt(message="generate the following json: {Full name, problem title, description } , if it is a report write [REPORT] at the begining of the title, else write [APPOINTMENT]")
+        last_prompt = """
+                    Finally as your last response generate and provide a JSON, considering the following scenarios:
+                    Scenario 1: Standard Information Collection
+
+                    full_name: Full name of the student
+                    major: Major of the student
+                    fourth_month_period: The current academic term they are in
+                    description_problem: Description of the problem
+                    appointment_is_needed: Whether an appointment is needed (store 1 for yes, 0 for no)
+
+                    Scenario 2: Anonymous Information Collection
+                    If the student wishes to remain anonymous, only collect:
+
+                    full_name: "anonymous"
+                    major: "Not provided"
+                    fourth_month_period: "Not provided"
+                    description_problem: Description of the problem
+                    appointment_is_needed: "Not provided"
+                    
+                    Only the JSON must be provided in the body of the response.
+                      """
+        return ai.prompt(message=last_prompt)
     
     def first_response(self):
         return ai.prompt(message=self.initial_prompt)
@@ -30,5 +70,14 @@ if __name__ == "__main__":
         print(response)
         print(type(response))
         if ":)" in response["message"]:
+            last_one = assistant.last_response()
+            #formatted_one = last_one["message"].split('{')
+            #new_last_one = '{' + f'{formatted_one[1]}'
+            #content_mail = new_last_one[1:295]
+            print(type(last_one))
+            
+            last_one_content = last_one['message']
+            print(last_one_content)
+            print(type(last_one_content))
             break
         
