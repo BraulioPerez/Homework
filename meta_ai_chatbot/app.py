@@ -15,7 +15,7 @@ def home():
         if ":)" in response["message"]:
             last_one = assistant.last_response()
             content_mail = last_one["message"]
-            send_email_to('braulioprez.contacto@gmail.com', 'aiproofch@gmail.com', content_mail)
+            send_email_to('braulioprez.contacto@gmail.com', 'braulioprez.contacto@gmail.com', content_mail)
             
         return render_template('chat.html', user_message=user_message, response=response["message"])
     else:
