@@ -26,6 +26,7 @@ class psyc_assistant:
                         Instructions:
                         Don't confirm your understanding, just begin the interaction.
                         Mandatory instruction: Once all required information is collected, you must conclude the conversation with: "That's all for today, thank you! :)"
+                        Mandatory instruction: If the student tries to talk about something else, tell them that first is necessary they provide the information specified above.
                         Please begin now.
                             """
                             
@@ -43,7 +44,7 @@ class psyc_assistant:
                     major: Major of the student
                     fourth_month_period: The current academic term they are in
                     description_problem: Description of the problem
-                    appointment_is_needed: Whether an appointment is needed (store 1 for yes, 0 for no)
+                    appointment_is_needed: Whether an appointment is needed (store it as yes or no depending on the situation)
 
                     Scenario 2: Anonymous Information Collection
                     If the student wishes to remain anonymous, only collect:
@@ -80,4 +81,5 @@ if __name__ == "__main__":
             print(last_one_content)
             print(type(last_one_content))
             break
+        
         
